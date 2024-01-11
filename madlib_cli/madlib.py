@@ -1,16 +1,13 @@
-def read_template(txt):
-    if txt == 'assets/dark_and_stormy_night_template.txt':
+def read_template(txt):  
 
-        file = open('./assets/dark_and_stormy_night_template.txt')
+    file = open(txt)
 
-        contents = file.read()
+    contents = file.read()
 
-        file.close()
+    file.close()
 
-        return(contents)
+    return(contents)
     
-    else:
-        return None
 
 def parse_template(template):
     
@@ -32,4 +29,17 @@ def parse_template(template):
     terms = tuple(removed_terms)
 
     return new_template, terms
+
+def merge(template, terms):
+
+    words_to_replace = terms
+
+    new_template = template
+
+    for i in words_to_replace:
+        new_template = new_template.replace('{}', f'{i}', 1)
+    
+    return new_template
+
+
 
